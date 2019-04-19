@@ -1,33 +1,85 @@
-//SFML Template by Ben Bollinger
-
 #include <iostream>
-#include <SFML/Graphics.hpp>
+#include <iomanip>
+#include <string>
+#include <windows.h>
+#include <conio.h>
 
-int main() {
-	sf::RenderWindow window;
+using namespace std;
+bool gameOver = false;
+int X = 1;
+int Y = 1;
+enum Directon { STOP = 0, LEFT, RIGHT, UP, DOWN };
+Directon dir;
+char D;
 
-	sf::Vector2i centerWindow((sf::VideoMode::getDesktopMode().width / 2) - 445, (sf::VideoMode::getDesktopMode().height / 2) - 480);
+void input()
+{
+	while (gameOver == false) {
+		
+		cin >> D;
 
-	window.create(sf::VideoMode(900, 900), "SFML Project", sf::Style::Titlebar | sf::Style::Close);
-	window.setPosition(centerWindow);
+		gameOver = false;
+		if (_kbhit())
+		{
+			switch (_getch())
+			{
+				dir = STOP;
+			case 'a':
+				dir = LEFT;
+				cout << "left";
+				break;
+			case 'd':
+				dir = RIGHT;
+				break;
+			case 'w':
+				dir = UP;
+				break;
+			case 's':
+				dir = DOWN;
+				break;
+			case 'p':
+				gameOver = true;
+				break;
 
-	window.setKeyRepeatEnabled(true);
-
-	//Main Loop:
-	while (window.isOpen()) {
-
-		sf::Event Event;
-
-		//Event Loop:
-		while (window.pollEvent(Event)) {
-			switch (Event.type) {
-
-			case sf::Event::Closed:
-				window.close();
 			}
 
-		}
-		window.clear();
-		window.display();
+			switch (dir)
+			{
+			case LEFT:
+				X--;
+				break;
+			case RIGHT:
+				X++;
+				break;
+			case UP:
+				Y--;
+				break;
+			case DOWN:
+				Y++;
+				break;
+			default:
+				break;
+			}
+
+		} while (gameOver == false);
+
 	}
+}
+
+	
+int main()
+{
+	
+	while (gameOver == false)
+	{
+		
+		input();
+		cout << X;
+		cout << Y;
+		Sleep(10); 
+	}
+	return 0;
+
+
+		return 0;
 }

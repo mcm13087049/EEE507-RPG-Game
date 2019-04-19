@@ -93,6 +93,8 @@ int menu::mainmenu()
 	return 0;
 }
 
+//functions to be used by other classes it interact with the values 
+
 bool menu::getStart()
 {
 	return Start;
@@ -106,11 +108,11 @@ int menu::getDifficulty()
 	return Difficulty;
 }
 
-//int main()
-//{
-//	menu test;
-//
-//	test.mainmenu();
-//
-//	return 0;
-//}
+int main()
+{
+	menu test;
+
+	test.mainmenu();
+
+	return 0;
+}
