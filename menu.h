@@ -1,3 +1,8 @@
+/*
+* @author Jordan McMullan <McMullan-J20@ulster.ac.uk>
+* @license https://choosealicense.com/licenses/mit/
+* @copyright if(!Broken){don'tFixIt();}
+*/
 #pragma once
 
 #include <iostream>
@@ -5,7 +10,12 @@
 #include <string>
 #include <windows.h>
 #include <conio.h>
-
+//#include "CCreator.h"
+#include "character.h"
+#include "TileMap.h"
+#include "item.h"
+#include <time.h>
+#include <ctime>
 using namespace std;
 
 /**
@@ -33,10 +43,29 @@ private:
 public:
 
 	/**
-   * the below fuctions are how the private variable will be read by other classes.
+   * The below sleep fuction delays the output of a case input.
    */
-	int mainmenu();
+	void sleep(unsigned long msecs);
+
+	/**
+   * These are prototypes of the main functions in my code.
+   */
+	void mainmenu();
+	void input();
+
+	/**
+   * The below fuctions are how the private variable will be read by other classes.
+   */
 	bool getStart();
 	bool getExit();
 	int getDifficulty();
+
+	//Map
+	TileMap map;
+
+	//cCreater
+	CCreator players;
+
+	// test
+	menu test;
 };
